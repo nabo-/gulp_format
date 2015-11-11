@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+.heading {
+	font-weight: bold;
+	line-height: 1.45;
+
+	&--huge {
+		@extend .heading;
+		font-size: $size-huge;
+	}
+	&--big {
+		@extend .heading;
+		font-size: $size-big;
+	}
+	&--major {
+		@extend .heading;
+		font-size: $size-major;
+	}
+	&--default {
+		@extend .heading;
+		font-size: $size-default;
+	}
+	&--minor {
+		@extend .heading;
+		font-size: $size-minor;
+	}
+	&--small {
+		@extend .heading;
+		font-size: $size-small;
+	}
+}

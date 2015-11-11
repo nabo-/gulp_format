@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+// text color helper
+.-clr-strong {
+	color: $color-strong;
+}
+
+.-clr-default {
+	color: $color-default;
+}
+
+.-clr-fine {
+	color: $color-fine;
+}
+
+.-clr-link {
+	color: $color-link;
+}
+
+.-clr-attention {
+	color: $color-attention;
+}
+
+.-clr-white {
+	color: #fff;
+}
+
+.-clr-disable {
+	color: $color-disable;
+}
+
+
+.-clr-active {
+	color: $color-active;
+}
+
+
+
+// text line height helper
+.-lineheight-large {
+	line-height: 1.6;
+}
+.-lineheight-default {
+	line-height: 1.45;
+}
+.-lineheight-small {
+	line-height: 1;
+}
+
+
+// text position helper
+
+.-right {
+	text-align: right;
+}
+.-center {
+	text-align: center;
+}
+.-left {
+	text-align: left;
+}
+
+// text decoration helper
+.-underline {
+	text-decoration: underline;
+}
+.-normal {
+	font-weight: normal;
+}
+.-bold {
+	font-weight: bold;
+}
+.-nowrap {
+	white-space: nowrap;
+}
+.-text-overflow {
+	width: 100%;
+	max-width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

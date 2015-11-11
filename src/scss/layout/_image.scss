@@ -1,0 +1,122 @@
+@charset "utf-8";
+
+
+.l-image {
+	display: inline-block;
+	vertical-align: bottom;
+	position: relative;
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		vertical-align: bottom;
+	}
+
+	&__body {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	&--width-50 {
+		@extend .l-image;
+		width: 50px;
+		.image__body {
+			width: 50px;
+			height: 50px;
+		}
+	}
+
+	&--width-70 {
+		@extend .l-image;
+		width: 70px;
+		.image__body {
+			width: 70px;
+			height: 70px;
+		}
+	}
+
+}
+
+
+
+
+// $img-screen-360 : 15px;
+// $img-screen-568 : 25px;
+// $img-screen-640 : 30px;
+
+// // iphone 6　/ iphone 6 plus / orientationchange iphone 4
+// @media screen and (min-width: 360px){
+// 	// default + 15px
+
+
+// 	.image {
+// 		&--width_50 {
+// 			width: 50px + $img-screen-360;
+// 			.ts-image__body {
+// 				width: 50px + $img-screen-360;
+// 				height: 50px + $img-screen-360;
+// 			}
+// 		}
+
+// 		&--width_70 {
+// 			width: 70px + $img-screen-360;
+// 			.ts-image__body {
+// 				width: 70px + $img-screen-360;
+// 				height: 70px + $img-screen-360;
+// 			}
+// 		}
+
+// 	}
+// }
+
+
+// // orientationchange iphone 5
+// @media screen and (min-width: 568px){
+// 	// default + 25px
+
+// 	.image {
+// 		&--width_50 {
+// 			width: 50px + $img-screen-568;
+// 			.ts-image__body {
+// 				width: 50px + $img-screen-568;
+// 				height: 50px + $img-screen-568;
+// 			}
+// 		}
+
+// 		&--width_70 {
+// 			width: 70px + $img-screen-568;
+// 			.ts-image__body {
+// 				width: 70px + $img-screen-568;
+// 				height: 70px + $img-screen-568;
+// 			}
+// 		}
+
+// 	}
+// }
+
+
+// // orientationchange iphone 6　/ orientationchange iphone 6 plus
+// @media screen and (min-width: 640px){
+// 	// default + 30px
+
+// 	.image {
+// 		&--width_50 {
+// 			width: 50px + $img-screen-640;
+// 			.ts-image__body {
+// 				width: 50px + $img-screen-640;
+// 				height: 50px + $img-screen-640;
+// 			}
+// 		}
+
+// 		&--width_70 {
+// 			width: 70px + $img-screen-640;
+// 			.ts-image__body {
+// 				width: 70px + $img-screen-640;
+// 				height: 70px + $img-screen-640;
+// 			}
+// 		}
+
+// 	}
+// }
+

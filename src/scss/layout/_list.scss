@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.l-list {
+	&__item {
+		text-align: left;
+	}
+	&__layout {
+		min-height: 46px;
+		display: block;
+		padding: 16px;
+		border-bottom: solid 1px #ccc;
+		background-color: #fff;
+		box-sizing: border-box;
+	}
+
+	&__body {
+		display: block;
+	}
+
+}

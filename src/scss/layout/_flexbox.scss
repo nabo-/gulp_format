@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+
+.l-flexbox {
+	display: flex;
+
+	&__item {
+
+		&--flex {
+			// @extend .l-flexbox__item;
+			flex: 1;
+		}
+	}
+
+	&--align-center {
+		@extend .l-flexbox;
+		align-items: center;
+	}
+	&--justify-center {
+		@extend .l-flexbox;
+		justify-content: center;
+	}
+	&--center {
+		@extend .l-flexbox;
+		align-items: center;
+		justify-content: center;
+	}
+}

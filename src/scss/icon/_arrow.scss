@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+// base placeholder
+%arrow-right-default {
+	width: 100%;
+	position: relative;
+	padding-right: 40px;
+
+	&:after {
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		margin-top: -4px;
+		content: "";
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-top: solid 3px $arrow-color-gray;
+		border-right: solid 3px $arrow-color-gray;
+		transform: rotate(45deg);
+	}
+}
+
+%arrow-left-default {
+	width: 100%;
+	position: relative;
+	padding-left: 40px;
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 20px;
+		margin-top: -4px;
+		content: "";
+		display: block;
+		width: 6px;
+		height: 6px;
+		border-left: solid 3px $arrow-color-gray;
+		border-bottom: solid 3px $arrow-color-gray;
+		transform: rotate(45deg);
+	}
+}
+
+
+// arrow icon class
+.ic-arr-r {
+	@extend %arrow-right-default;
+}
+.ic-arr-l {
+	@extend %arrow-left-default;
+}

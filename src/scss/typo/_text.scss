@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+.text {
+
+	line-height: 1.6;
+
+	// 16px
+	&--huge {
+		@extend .text;
+		font-size: $size-huge;
+		font-weight: bold;
+	}
+
+	// 14px
+	&--big {
+		@extend .text;
+		font-size: $size-big;
+		font-weight: bold;
+	}
+
+	// 13px
+	&--major {
+		@extend .text;
+		font-size: $size-major;
+		font-weight: bold;
+	}
+
+	// 12px
+	&--default {
+		@extend .text;
+		font-size: $size-default;
+	}
+
+	// 11px
+	&--minor {
+		@extend .text;
+		font-size: $size-minor;
+	}
+
+	// 10px
+	&--small {
+		@extend .text;
+		font-size: $size-small;
+	}
+}

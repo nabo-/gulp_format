@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+// エレメントの番号を足して12になるようにする
+.l-col {
+	&:after {
+		content:"";
+		display: block;
+		clear: both;
+	}
+
+	&__1 {
+		width: 8.333%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__2 {
+		width: 16.666%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__3 {
+		width: 24.999%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__4 {
+		width: 33.332%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__5 {
+		width: 41.665%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__6 {
+		width: 49.998%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__7 {
+		width: 58.331%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__8 {
+		width: 66.664%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__9 {
+		width: 74.997%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__10 {
+		width: 83.33%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__11 {
+		width: 91.663%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+	&__12 {
+		width: 100%;
+		float: left;
+		text-align: left;
+		box-sizing: border-box;
+	}
+}
