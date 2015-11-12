@@ -5,6 +5,8 @@ var browser = require("browser-sync");
 var buffer = require('vinyl-buffer');
 var through2 = require('through2');
 var sourcemaps = require('gulp-sourcemaps');
+var runSequence = require('run-sequence');
+var del = require('del');
 
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
@@ -24,6 +26,8 @@ gulp.task('server', function() {
     });
 });
 
+
+// sass
 gulp.task('css', function() {
     gulp.src('./src/scss/**/*.scss')
 		.pipe(plumber())
@@ -35,7 +39,7 @@ gulp.task('css', function() {
 		.pipe(browser.reload({stream:true}));
 });
 
-
+// javascript Browserify
 gulp.task('js', function(){
     gulp.src('./src/js/**/*.js')
 		.pipe(plumber())
@@ -58,15 +62,26 @@ gulp.task('js', function(){
 		.pipe(browser.reload({stream:true}));
 });
 
-gulp.task('ejs', function() {
+// template
+gulp.task('html', function() {
     gulp.src(['./src/html/**/*.ejs', '!./src/html/**/_*.ejs'])
         .pipe(ejs())
         .pipe(gulp.dest('./build'))
 		.pipe(browser.reload({stream:true}));
 });
 
-gulp.task('live',['server'], function() {
-    gulp.watch('./src/js/**/*.js',['js']);
-    gulp.watch('./src/scss/**/*.scss',['css']);
-	gulp.watch('./src/html/**/*.ejs',['ejs']);
+// clean
+gulp.task('clean', function(){
+	del([
+		'**/.DS_Store',
+		'**/.sass-cache'
+	]);
+});
+
+gulp.task('build', ['html', 'js', 'css', 'clean']);
+
+gulp.task('live',['server'], function(){
+    gulp.watch('./src/js/**/*.js', ['js']);
+    gulp.watch('./src/scss/**/*.scss', ['css']);
+	gulp.watch('./src/html/**/*.ejs', ['html']);
 });
