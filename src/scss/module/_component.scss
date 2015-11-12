@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+.component {
+	width: 300px;
+	margin: 14px auto;
+
+	&__header {
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		background-color: #f6f2ea;
+		padding: 10px;
+	}
+
+	&__body {
+		padding: 10px;
+		background-color: #fff;
+	}
+
+	&__footer {
+		border-top: solid 1px #f6f2ea;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		padding: 10px;
+		background-color: #eee;
+	}
+}

@@ -3,8 +3,7 @@ var glob = require('glob');
 var plumber = require('gulp-plumber');
 var browser = require("browser-sync");
 var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var transform = require('vinyl-transform');
+var through2 = require('through2');
 var sourcemaps = require('gulp-sourcemaps');
 
 var sass = require('gulp-sass');
@@ -35,57 +34,36 @@ gulp.task('css', function() {
         .pipe(gulp.dest('./build/css'))
 		.pipe(browser.reload({stream:true}));
 });
-//
-// gulp.task('default', function() {
-//   var srcFiles;
-//   srcFiles = glob.sync('./src/*.coffee');
-//   return browserify({
-//     entries: srcFiles,
-//     transform: ['reactify']
-//   })
-//   .bundle()
-//   .pipe(source('bundle.js'))
-//   .pipe(gulp.dest('./build'));
-// });
+
 
 gulp.task('js', function(){
-	srcFiles = glob.sync('./src/js/**/*.js');
-
-	return browserify({
-		entries: srcFiles,
-		transform: ['reactify']
-	})
-	.bundle()
-	.pipe(source('bundle.js'))
-	.pipe(gulp.dest('./build/js'));
+    gulp.src('./src/js/**/*.js')
+		.pipe(plumber())
+    	.pipe(through2.obj(function(file, encode, callback){
+	        browserify(file.path, {
+				transform: [reactify]
+			})
+	        .bundle(function(err, res){
+	            file.contents = res;
+	            callback(null, file);
+	        });
+	    }))
+		.pipe(sourcemaps.init({
+			loadMaps: true
+		}))
+		.pipe(buffer())
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./map'))
+	    .pipe(gulp.dest('./build/js/'))
+		.pipe(browser.reload({stream:true}));
 });
-
-// gulp.task('js', function(){
-//
-// 	var browserified = transform(function(filename){
-// 		var b = browserify(filename);
-// 		b.transform(reactify);
-// 		b.add(filename);
-// 		return b.bundle();
-// 	});
-//
-// 	gulp.src(['./src/js/**/*.js'])
-// 		.pipe(plumber())
-// 		.pipe(browserified)
-// 		.pipe(buffer())
-// 		.pipe(sourcemaps.init({loadMaps: true}))
-// 		.pipe(sourcemaps.write('./map'))
-// 		.pipe(uglify())
-// 		.pipe(gulp.dest('./build/js'))
-// 		.pipe(browser.reload({stream:true}));
-// });
 
 gulp.task('ejs', function() {
     gulp.src(['./src/html/**/*.ejs', '!./src/html/**/_*.ejs'])
         .pipe(ejs())
-        .pipe(gulp.dest("./build"));
+        .pipe(gulp.dest('./build'))
+		.pipe(browser.reload({stream:true}));
 });
-
 
 gulp.task('live',['server'], function() {
     gulp.watch('./src/js/**/*.js',['js']);

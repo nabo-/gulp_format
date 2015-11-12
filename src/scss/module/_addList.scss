@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+
+.addList {
+	border: solid 1px #ccc;
+	background-color: #fff;
+
+	&__item {
+		padding: 8px;
+		border-bottom: dotted 1px #ccc;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	&__layout {
+		display: flex;
+		align-items: center;
+
+		&>div {
+			&:nth-child(1){
+				flex: 1;
+				font-size: 14px;
+			}
+			&:nth-child(2){
+				margin-left: 8px;
+			}
+		}
+	}
+
+	button {
+		width: 60px;
+		height: 30px;
+		background-color: #e92a00;
+		color: #fff;
+		font-size: 12px;
+		font-weight: bold;
+		border: none;
+	}
+}
