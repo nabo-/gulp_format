@@ -8,6 +8,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var runSequence = require('run-sequence');
 var del = require('del');
 
+var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var csscomb = require('gulp-csscomb');
@@ -16,6 +17,15 @@ var browserify = require('browserify');
 var reactify = require('reactify');
 var uglify = require('gulp-uglify');
 var ejs = require('gulp-ejs');
+
+
+var paths = {
+    srcDir : './src',
+    dstDir : './build',
+    scssSrc : './src/scss',
+    jsSrc : './src/js',
+    imgSrc : './src/img'
+};
 
 
 gulp.task('server', function() {
@@ -29,10 +39,13 @@ gulp.task('server', function() {
 
 // sass
 gulp.task('css', function() {
-    gulp.src('./src/scss/**/*.scss')
+    gulp.src('./src/**/*.scss')
 		.pipe(plumber())
         .pipe(sass({outputStyle: 'compact'}))
-		.pipe(autoprefixer(['iOS >= 4','Android >= 2.3','Firefox ESR']))
+		.pipe(autoprefixer({
+            browsers: ['iOS >= 4','Android >= 2.3','Firefox ESR'],
+    		cascade: false
+        }))
 		.pipe(csscomb())
 		.pipe(csso())
         .pipe(gulp.dest('./build/css'))
@@ -60,6 +73,19 @@ gulp.task('js', function(){
 		.pipe(sourcemaps.write('./map'))
 	    .pipe(gulp.dest('./build/js/'))
 		.pipe(browser.reload({stream:true}));
+});
+
+
+gulp.task( 'imagemin', function(){
+    var srcGlob = './src/img/**/*.+(jpg|jpeg|png|gif|svg)';
+    var dstGlob = './build/img';
+    var imageminOptions = {
+        optimizationLevel: 7
+    };
+
+    gulp.src(srcGlob)
+        .pipe(imagemin(imageminOptions))
+        .pipe(gulp.dest(dstGlob));
 });
 
 // template
